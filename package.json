@@ -11,6 +11,7 @@
 	"dependencies": {
 		"@babel/core": "^7.12.10",
 		"@babel/preset-react": "^7.12.10",
+		"netlify-cms-app": "^2.14.8",
 		"next": "10.0.2",
 		"react": "17.0.1",
 		"react-dom": "17.0.1"
