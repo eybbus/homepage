@@ -1,7 +1,7 @@
 export default {
   cms_manual_init: true,
   backend: {
-    name: "github",
+    name: "github", // github || test-repo
     repo: "eybbus/Homepage",
     branch: "netlify-cms-tutorial",
   },
@@ -36,5 +36,37 @@ export default {
         },
       ],
     },
+    {
+      label: "blog",
+      name: "blog",
+      folder: "content/pages/blog",
+      create: true,
+      identifier_field: "name",
+      fields: [
+        {
+          label: "Name",
+          name: "name",
+          widget: "string",
+        },
+        {
+          label: "Publish Date ",
+          name: "date",
+          widget: "datetime",
+        },
+        {
+          label: "Featured Image",
+          name: "thumbnail",
+          widget: "image",
+          required: false,
+        },
+        { label: "Body", name: "body", widget: "markdown" },
+      ],
+    },
   ],
 };
+
+/*
+label: "",
+name: "",
+widget: "",
+*/
