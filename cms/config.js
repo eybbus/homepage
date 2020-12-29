@@ -34,10 +34,33 @@ export default {
             },
           ],
         },
+        {
+          label: "/blog",
+          name: "/blogInfo",
+          file: "content/pages/blog.md",
+          fields: [
+            {
+              label: "Title",
+              name: "title",
+              widget: "string",
+            },
+            {
+              label: "Description",
+              name: "description",
+              widget: "text",
+            },
+            {
+              label: "Image",
+              name: "image",
+              required: false,
+              widget: "image",
+            },
+          ],
+        },
       ],
     },
     {
-      label: "blog",
+      label: "blogPosts",
       name: "blog",
       folder: "content/pages/blog",
       create: true,
@@ -64,9 +87,3 @@ export default {
     },
   ],
 };
-
-/*
-label: "",
-name: "",
-widget: "",
-*/
