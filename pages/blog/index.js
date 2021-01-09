@@ -1,9 +1,28 @@
 import react from "react";
 import matter from "gray-matter";
+import Layout from "../../components/layout/layouts/Layout";
+import styled from "styled-components";
+
+const PostsContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 80%;
+`;
 
 const BlogPosts = (props) => {
-  console.log(props.posts);
-  return <h1>Blogs</h1>;
+  const { posts, pageData } = props;
+  return (
+    <Layout>
+      <h1>{pageData.title}</h1>
+      <p>{pageData.description}</p>
+      <PostsContainer>
+        {posts.map((post) => (
+          <div>{post.frontmatter.name}</div>
+        ))}
+      </PostsContainer>
+    </Layout>
+  );
 };
 
 export async function getStaticProps() {
@@ -26,9 +45,16 @@ export async function getStaticProps() {
     return data;
   })(require.context("../../content/pages/blog", true, /\.md$/));
 
-  console.log(posts);
+  const pageData = ((context) => {
+    const keys = context.keys();
+    const values = keys.map(context);
+    let document = matter(values[0].default);
+    return document.data;
+  })(require.context("../../content/pages/", true, /blog\.md$/));
+
   return {
     props: {
+      pageData,
       posts,
     },
   };
